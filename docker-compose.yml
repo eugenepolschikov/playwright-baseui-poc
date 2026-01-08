@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: autotests-playwright
+    container_name: autotests-playwright
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    command: npm test
+    environment:
+      - CI=true
+    # Uncomment the following lines if you need to run tests in headed mode
+    # environment:
+    #   - DISPLAY=${DISPLAY}
+    # volumes:
+    #   - /tmp/.X11-unix:/tmp/.X11-unix:rw
+
+
+
+
